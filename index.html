@@ -208,7 +208,34 @@
         </tbody>
       </table>
       <p class="figure-caption" style="text-align:center; margin-top:0.6rem;">
-        MM-Fi Setting-3 cross-environment (train E01&ndash;E03, test on the unseen room E04), Protocol&nbsp;3 (all 27 activities). Across the three activity protocols RePos lowers MPJPE by <strong>10&ndash;21%</strong> over the strongest baseline. In-domain on Person-in-WiFi-3D, the direct variant <strong>RePos-D</strong> reaches <strong>86.9&nbsp;mm</strong> MPJPE.
+        MM-Fi Setting-3 cross-environment (train E01&ndash;E03, test on the unseen room E04), Protocol&nbsp;3 (all 27 activities). Across the three activity protocols RePos lowers MPJPE by <strong>10&ndash;21%</strong> over the strongest baseline.
+      </p>
+    </div>
+
+    <h2 class="section-title" style="margin-top: 3rem;">In-domain results on Person-in-WiFi-3D</h2>
+    <div class="results-table">
+      <table class="table is-fullwidth">
+        <thead>
+          <tr>
+            <th>Method</th>
+            <th>MPJPE (mm) &darr;</th>
+            <th>PA-MPJPE (mm) &darr;</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>MetaFi++ (IoT-J'23)</td><td>132.0</td><td>75.8</td></tr>
+          <tr><td>HPE-Li (ECCV'24)</td><td>120.2</td><td>69.5</td></tr>
+          <tr><td>Person-in-WiFi-3D (CVPR'24)</td><td>91.7</td><td>&mdash;</td></tr>
+          <tr><td>DT-Pose (EIS'26)</td><td>90.0</td><td>58.7</td></tr>
+          <tr>
+            <td><strong>RePos-D (ours)</strong></td>
+            <td class="best">86.9</td>
+            <td class="best">57.5</td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="figure-caption" style="text-align:center; margin-top:0.6rem;">
+        Person-in-WiFi-3D, in-domain (training and testing in the same environment). The direct variant <strong>RePos-D</strong> is state of the art &mdash; <strong>86.9&nbsp;mm</strong> MPJPE, a 3.4% gain over the best prior WiFi method (DT-Pose) and 5.2% over the dataset's native baseline. Within a fixed room, regressing absolute coordinates directly is already effective; the factorized RePos targets the cross-environment regime above.
       </p>
     </div>
   </div>
