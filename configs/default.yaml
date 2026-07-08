@@ -1,0 +1,64 @@
+# CSI-StructPose Default Configuration
+
+# Model Configuration
+model:
+  type: 'full'  # 'full' or 'light'
+
+  # CSI parameters
+  num_frames: 5
+  num_rx: 3
+  num_tx: 3
+  num_subcarriers: 114
+
+  # Model dimensions
+  embed_dim: 256
+  num_heads: 4
+  num_encoder_layers: 4
+  num_pt_layers: 4
+
+  # Output
+  num_joints: 17
+  point_dim: 5
+  dropout: 0.1
+
+# Dataset Configuration
+data:
+  root: './data/preprocessed'
+  num_workers: 4
+  normalize: true
+
+# Training Configuration
+training:
+  batch_size: 32
+  epochs: 50  # Same as csiDiff Phase 1
+  lr: 1e-4
+  weight_decay: 1e-4
+
+  # Learning rate scheduler
+  scheduler: 'cosine'
+  warmup_epochs: 5
+  min_lr: 1e-6
+
+  # Loss weights
+  consistency_weight: 0.5
+  limb_weight: 0.1
+
+  # Gradient clipping
+  grad_clip: 1.0
+
+# Evaluation Configuration
+evaluation:
+  eval_interval: 1  # Evaluate every epoch
+  metrics:
+    - 'mpjpe'
+    - 'pampjpe'
+
+# Experiment Configuration
+experiment:
+  name: 'csi_structpose'
+  output_dir: './experiments'
+  seed: 42
+
+  # Logging
+  log_interval: 50
+  tensorboard: true

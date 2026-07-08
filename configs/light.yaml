@@ -1,0 +1,57 @@
+# CSI-StructPose Light Configuration
+# For faster training and lower memory usage
+
+# Model Configuration
+model:
+  type: 'light'
+
+  # CSI parameters
+  num_frames: 5
+  num_rx: 3
+  num_tx: 3
+  num_subcarriers: 114
+
+  # Model dimensions (smaller)
+  embed_dim: 128
+  num_joints: 17
+  dropout: 0.1
+
+# Dataset Configuration
+data:
+  root: './data/preprocessed'
+  num_workers: 4
+  normalize: true
+
+# Training Configuration
+training:
+  batch_size: 64
+  epochs: 50
+  lr: 2e-4
+  weight_decay: 1e-4
+
+  # Learning rate scheduler
+  scheduler: 'cosine'
+  warmup_epochs: 3
+  min_lr: 1e-6
+
+  # Loss weights
+  consistency_weight: 0.3
+  limb_weight: 0.1
+
+  # Gradient clipping
+  grad_clip: 1.0
+
+# Evaluation Configuration
+evaluation:
+  eval_interval: 5
+  save_interval: 10
+  metrics:
+    - 'mpjpe'
+
+# Experiment Configuration
+experiment:
+  name: 'csi_structpose_light'
+  output_dir: './experiments'
+  seed: 42
+  log_interval: 50
+  tensorboard: true
