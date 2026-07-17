@@ -77,6 +77,29 @@ python evaluate_v2.py --checkpoint pretrained/<stage2_run>/v2_phase2_best.pth \
 Add `--latex` for a LaTeX table, `--per_activity` for a per-activity breakdown, or
 `--info_only` to print the metrics stored in a checkpoint without re-running.
 
+## Pretrained models
+
+The four main-table checkpoints are available on
+[Google Drive](https://drive.google.com/file/d/1dVdqI_03vdd7MigaQoHUrr5l3XVMFzDg/view?usp=drive_link)
+(`RePos_main_checkpoints.zip`, 190 MB). Each MM-Fi checkpoint contains the
+complete model (structure branch + ASPN), so no separate Stage-1 file is needed.
+
+| Checkpoint | Benchmark | MPJPE | PA-MPJPE | PCK@50 |
+|---|---|---|---|---|
+| `mmfi_cross_scene/repos_mmfi_p1.pth` | MM-Fi Protocol 1 (E01–E03 → E04) | 254.4 | 100.5 | 80.0 |
+| `mmfi_cross_scene/repos_mmfi_p2.pth` | MM-Fi Protocol 2 (E01–E03 → E04) | 284.1 | 99.3 | 64.9 |
+| `mmfi_cross_scene/repos_mmfi_p3.pth` | MM-Fi Protocol 3 (E01–E03 → E04) | 296.1 | 102.0 | 66.8 |
+| `piw3d_repos_d/repos_d_piw3d.pth` | Person-in-WiFi-3D (RePos-D, in-domain) | 86.9 | 57.5 | 91.4 |
+
+```bash
+# verify stored metrics without re-running
+python evaluate_v2.py --checkpoint repos_mmfi_p3.pth --info_only
+```
+
+Note: loading with the current code reports a few missing/unexpected keys
+(SGA attention-mask buffers); these are deterministic, rebuilt at init, and
+do not affect results.
+
 ## Repository layout
 
 ```
