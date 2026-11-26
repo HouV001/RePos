@@ -1,5 +1,24 @@
 # RePos
 
+> [!WARNING]
+> **Important Notice (November 2026)**
+>
+> During our re-evaluation, we identified an issue in the original
+> evaluation protocol on MM-Fi, where the test environment was used
+> for model selection.
+>
+> Further experiments under a corrected evaluation protocol revealed
+> that the apparent improvement in root estimation was largely due
+> to model collapse rather than effective localization.
+>
+> The subsequent experiments did not support the original
+> cross-environment generalization claims.
+>
+> Therefore, this project has been discontinued. We do not recommend
+> using the reported results as a reference for future research.
+>
+> We sincerely apologize for any inconvenience caused.
+
 Relative-to-absolute output factorization for cross-environment WiFi CSI-based 3D human pose estimation.
 
 RePos factors 3D pose prediction into two parts: a root-relative pose, decoded from a structured body-part-aware representation, and a root position, estimated by a separate amplitude-based branch. Keeping absolute-position supervision out of the structure branch improves generalization to unseen environments. A single-stage variant, RePos-D, targets in-domain deployment where direct absolute regression is sufficient.
